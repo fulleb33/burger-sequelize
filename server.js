@@ -4,7 +4,7 @@ var db = require("./models");
 var mysql = require("mysql");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+//var PORT = process.env.PORT || 3000;
 
 app.use(express.static(process.cwd() + "/public"));
 
@@ -18,7 +18,7 @@ app.set("view engine", "handlebars");
 require("./routes/burger-routes.js")(app);
 
 db.sequelize.sync().then(function() {
-	app.listen(PORT, function() {
+	app.listen(process.env.PORT || 3000, function() {
 		console.log("Listening on PORT " + PORT);
 	});
 });
